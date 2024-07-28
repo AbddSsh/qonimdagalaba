@@ -1,0 +1,157 @@
+@import "reset.scss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+}
+
+.main_page {
+  background: url("/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media (max-width: 768px) {
+    background-size: cover;
+  }
+
+  .main__wrapper {
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+
+    @media (max-width: 768px) {
+      // padding-bottom: 100px;
+      // overflow: auto;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 100;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.5);
+
+      @media (max-width: 992px) {
+        font-size: 20px;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 375px) {
+        font-size: 12px;
+      }
+    }
+
+    .player_wrapper {
+      box-shadow: 0px 1px 50px 10px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      border-radius: 15px;
+    }
+  }
+
+}
+
+
+// next/prev btns
+
+.controls {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.2);
+
+  .btn-arrow {
+    color: transparent;
+    display: block;
+    margin: 20px;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    transition: all 150ms ease-out;
+
+    @media (max-width: 992px) {
+      margin: 15px;
+      width: 15px;
+      height: 15px;
+    }
+
+    @media (max-width: 768px) {
+      margin: 10px;
+      width: 10px;
+      height: 10px;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      background-color: #606060;
+
+      transition: all 150ms ease-out;
+    }
+
+    &::before {
+      width: 75%;
+      height: 25%;
+    }
+
+    &::after {
+      width: 25%;
+      height: 75%;
+    }
+
+    &:hover {
+
+      &::before,
+      &::after {
+        background-color: #ffffff;
+      }
+    }
+
+    &.btn-arrow-left,
+    &.btn-arrow-right {
+
+      &::before,
+      &::after {
+        top: 12.5%;
+        left: 12.5%;
+      }
+    }
+
+    &.btn-arrow-left {
+      transform: rotate(-45deg);
+    }
+
+    &.btn-arrow-right {
+      transform: rotate(135deg);
+    }
+  }
+}
