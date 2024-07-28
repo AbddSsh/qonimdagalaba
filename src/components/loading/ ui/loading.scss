@@ -1,12 +1,12 @@
 .skeleton {
     max-width: 1000px;
     max-height: 600px;
-    width: 100vw;
+    width: 80vw;
     height: 70svh;
     background: #eee;
     // background: linear-gradient(110deg, #cdcdcd 8%, #e9e9e9 18%, #cdcdcd 33%);
     background: linear-gradient(110deg, #606060 8%, #747474 18%, #606060 33%);
-    background-size: 200% 100%;
+    background-size: 400% 300%;
     animation: 1.5s shine linear infinite;
     display: flex;
     justify-content: center;

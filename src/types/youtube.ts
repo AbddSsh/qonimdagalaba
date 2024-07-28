@@ -1,4 +1,6 @@
 export interface VideoItem {
-  id: number;
+  id: string;
   url: string;
+  inst_link: string;
+  username: string;
 }

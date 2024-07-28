@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
 import { Loading, Player } from "./components";
 import { videosList } from "./assets/data";
+import { VideoItem } from "./types/youtube";
 
 export const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [previusIndex, setPreviusIndex] = useState(
     Math.floor(Math.random() * videosList.length)
   );
-  const [selectedUrl, setSelectedUrl] = useState<string>("");
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem>({
+    id: "1",
+    url: "sdfsdfsdf",
+    inst_link: "sdfsdfsdf",
+    username: "username",
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -18,7 +24,7 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    setSelectedUrl(videosList[currentIndex].url);
+    setSelectedVideo(videosList[currentIndex]);
   }, [currentIndex]);
 
   const handlePrevious = () => {
@@ -44,9 +50,14 @@ export const App = () => {
   return (
     <main className="main_page">
       <div className="main__wrapper">
-        <h1 className="title">#qonimdagalaba</h1>
+        {/* <h1 className="title">#qonimdagalaba</h1> */}
+        <h1 className="title">
+          <a href={selectedVideo?.inst_link} target="_blank">
+            {selectedVideo.id}. <span>{selectedVideo?.username}</span>
+          </a>
+        </h1>
         <section className="player_wrapper">
-          {isLoading ? <Loading /> : <Player videoUrl={selectedUrl} />}
+          {isLoading ? <Loading /> : <Player videoUrl={selectedVideo.url} />}
           <div className="controls">
             <button
               onClick={handlePrevious}
