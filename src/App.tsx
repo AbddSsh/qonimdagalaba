@@ -4,16 +4,15 @@ import { videosList } from "./assets/data";
 import { VideoItem } from "./types/youtube";
 
 export const App = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(
+    Math.floor(Math.random() * videosList.length)
+  );
   const [previusIndex, setPreviusIndex] = useState(
     Math.floor(Math.random() * videosList.length)
   );
-  const [selectedVideo, setSelectedVideo] = useState<VideoItem>({
-    id: "1",
-    url: "sdfsdfsdf",
-    inst_link: "sdfsdfsdf",
-    username: "username",
-  });
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem>(
+    videosList[currentIndex]
+  );
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
